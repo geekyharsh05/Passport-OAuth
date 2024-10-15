@@ -1,15 +1,17 @@
 {
     "version": 2,
+    "name": "passportjs-test",
     "builds": [
-     {
-      "src": "./src/index.js",
-      "use": "@vercel/node"
-     }
+      {
+        "src": "src/index.js",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-     {
-      "src": "./src(.*)",
-      "dest": "index.js"
-     }
+      {
+        "src": "/(.*)",
+        "dest": "src/index.js"
+      }
     ]
-}
+  }
+  
