@@ -1,8 +1,9 @@
 import passport from "passport";
+import { HomePage, ProtectedRoute } from "../config/template.js";
 
 class AuthController {
   static homePage(_req, res) {
-    res.send('<a href="/auth/google">Authenticate with Google</a>');
+    res.send(HomePage);
   }
 
   static googleAuth(req, res, next) {
@@ -19,7 +20,8 @@ class AuthController {
   }
 
   static protectedRoute(req, res) {
-    res.send(`Hello, ${req.user.displayName}`);
+    const username = req.user.displayName;
+    res.send(ProtectedRoute(username));
   }
 
   static logout(req, res) {
@@ -29,7 +31,7 @@ class AuthController {
         return res.status(500).send("Failed to log out");
       }
       req.session.destroy(() => {
-        res.send("Goodbye!");
+        res.redirect("/auth");
       });
     });
   }
