@@ -5,7 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "build": "echo 'No build step defined' && exit 0",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "",
