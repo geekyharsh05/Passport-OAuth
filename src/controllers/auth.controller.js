@@ -6,6 +6,7 @@ class AuthController {
     res.send(HomePage);
   }
 
+  // Google Authentication
   static googleAuth(req, res, next) {
     passport.authenticate("google", {
       scope: ["email", "profile"],
@@ -19,11 +20,35 @@ class AuthController {
     })(req, res);
   }
 
+  static googleFailure(req, res) {
+    res.send("Failed to authenticate with Google");
+  }
+
+  // GitHub Authentication
+  static githubAuth(req, res, next) {
+    passport.authenticate("github", {
+      scope: ["user:email"],
+    })(req, res, next);
+  }
+
+  static githubCallback(req, res) {
+    passport.authenticate("github", {
+      successRedirect: "/auth/protected",
+      failureRedirect: "/auth/github/failure",
+    })(req, res);
+  }
+
+  static githubFailure(req, res) {
+    res.send("Failed to authenticate with GitHub");
+  }
+
+  // Protected Route
   static protectedRoute(req, res) {
     const username = req.user.displayName;
     res.send(ProtectedRoute(username));
   }
 
+  // Logout
   static logout(req, res) {
     req.logout((err) => {
       if (err) {
@@ -34,10 +59,6 @@ class AuthController {
         res.redirect("/auth");
       });
     });
-  }
-
-  static googleFailure(req, res) {
-    res.send("Failed to authenticate");
   }
 }
 

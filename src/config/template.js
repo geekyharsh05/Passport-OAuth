@@ -4,7 +4,7 @@ export const HomePage = `
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Authentication</title>
+        <title>Passport-Authentication</title>
         <style>
           body {
             font-family: Arial, sans-serif;
@@ -41,8 +41,9 @@ export const HomePage = `
       </head>
       <body>
         <div class="container">
-          <p>Please authenticate using your Google account.</p>
+          <p>Please authenticate using your Google or GitHub account.</p>
           <a href="/auth/google">Authenticate with Google</a>
+          <a href="/auth/github">Authenticate with GitHub</a>
         </div>
       </body>
     </html>
