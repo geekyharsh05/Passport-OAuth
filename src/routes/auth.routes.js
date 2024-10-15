@@ -5,6 +5,7 @@ import isLoggedIn from "../middlewares/auth.middleware.js";
 const router = Router();
 
 router.get("/", AuthController.homePage);
+
 router.get("/google", AuthController.googleAuth);
 router.get("/google/callback", AuthController.googleCallback);
 router.get("/google/failure", AuthController.googleFailure);
